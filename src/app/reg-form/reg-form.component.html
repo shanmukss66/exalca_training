@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <h1>Sign Up Form</h1>
+    <form #regform="ngForm" (ngSubmit)="onclickSubmit(regform.value)">
+      <div class="form-group">
+        <label>Firstname</label>
+        <input ngModel name="fname" type="text" required class="form-control">
+        <small style="color:red" [hidden]="fname_hide">This field cannot be empty</small>
+      </div>
+      <div class="form-group">
+        <label>Lastname</label>
+        <input ngModel name="lname" type="text" required class="form-control">
+        <small style="color:red" [hidden]="lname_hide">This field cannot be empty</small>
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input ngModel name="phone" type="number" min="10" required max="10" class="form-control">
+        <small style="color:red" [hidden]="phone_hide">This field cannot be empty/Lessthan 10 size</small>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input ngModel name="email" type="email" required class="form-control">
+        <small style="color:red" [hidden]="email_hide" >This field cannot be empty</small>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input ngModel name="password" type="password" required class="form-control">
+        <small style="color:red" [hidden]="pass_hide">This field cannot be empty</small>
+        <small style="color:red" [hidden]="pass_match">password didnt match</small>
+      </div>
+      <div class="form-group">
+        <label>Re-Type Password</label>
+        <input  ngModel name="con_password" type="password" required class="form-control">
+        <small style="color:red" [hidden]="conpass_hide">This field cannot be empty</small>
+      </div>
+      <div class="form-group">
+        <label>State</label>
+        <select (change)="getSelectedOptionText($event)" required class="selectbox" ngModel name="selected_state">
+          <option selected>state</option>
+          <option *ngFor="let s of state " class="dropdown-item">{{s}}</option>
+  
+        </select>
+        
+  
+        <label>City</label>
+        <select class="selectbox" (change)="getSelectedOptionText($event)" required ngModel name="selected_city">
+          <option selected>city</option>
+          <option *ngFor="let s of  selectedstate " class="dropdown-item">{{s}}</option>
+  
+        </select>
+        <small style="color:red" [hidden]="select_hide">Please select </small>
+  
+       
+      </div>
+      <div class="btnlocation" >
+        <input type="submit" class="btn btn-primary" value="Submit">
+      </div>
+<router-outlet></router-outlet>

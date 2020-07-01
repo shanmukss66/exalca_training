@@ -1,0 +1,13 @@
+.form-group{
+    width: 450px;
+
+}
+
+.selectbox{
+    width: 150px;
+    padding: 5px;
+}
+.btnlocation{
+    left: 150px;
+    position: absolute;
+}
