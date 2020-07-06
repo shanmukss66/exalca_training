@@ -1,0 +1,28 @@
+<div>
+   <div class="sidenavbar" >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+      <app-sidebarlist (myoutputdata)="reciever($event)"></app-sidebarlist> 
+      
+    </li>
+
+        <!-- <li class="nav-item active" *ngFor="let u of users" (click)="onclick(u.id)">
+          <a  class="nav-link">{{u.name}}</a>
+        </li> -->
+        
+    </ul>
+
+   </div>
+   
+   <div class="display">
+        <h3 class="h3">NAME: {{name}}</h3>
+       <br>
+       <h3 class="h3">USERNAME: {{username}}</h3>
+       <br>
+       <h3 class="h3">EMAIL: {{email}}</h3><br>
+       <h3 class="h3">PHONE: {{phone}}</h3><br>
+       <h3 class="h3">WEBSITE: {{website}}</h3>
+        <img src="{{url}}"> 
+       
+   </div>
+</div>
