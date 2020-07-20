@@ -3,6 +3,7 @@ import { userdetails } from '../models/usersdetails.model';
 import {DataService} from '../services/behavior.service'
 import { ActivatedRoute } from '@angular/router';
 import {postphoto} from '../models/photo.model';
+import { User } from '../models/user.model';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {postphoto} from '../models/photo.model';
 })
 export class SidebarlistComponent implements OnInit {
   
-  users:userdetails[];
+  users:User[];
     photos:postphoto[];
     userdetail_id;
     complete_detail={};
@@ -22,37 +23,18 @@ export class SidebarlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.getuserdetails();
-     this.getuserPhoto();
+     
   }
   getuserdetails(){
     this.route.data.subscribe(
-      (data:{users:any})=>{
+      (data:{users:User[]})=>{
         this.users=data.users;
         console.log(this.users);
         
       }
     )
   }
-  getuserPhoto(){
-    this.route.data.subscribe(
-      (data:{photos:any})=>{
-        this.photos=data.photos;
-        console.log(this.photos);
-        
-      }
-    )
-  }
-  reciever(data:any){
-    this.complete_detail={ "name":this.users[data].name,
-                          "username":this.users[data].username,
-                          "email":this.users[data].email,
-                          "phone":this.users[data].phone,
-                          "website":this.users[data].website,
-                          "photo":this.photos[data].thumbnailUrl
-                        }
-            this.dataservice.loadvalue(this.complete_detail)         
-    this.myoutputdata.emit(this.complete_detail);    
-         
-  }
+  
+  
 
 }

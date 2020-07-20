@@ -2,7 +2,7 @@
    <div class="sidenavbar" >
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-      <app-sidebarlist (myoutputdata)="reciever($event)"></app-sidebarlist> 
+      <app-sidebarlist></app-sidebarlist> 
       
     </li>
 
@@ -15,14 +15,16 @@
    </div>
    
    <div class="display">
-        <h3 class="h3">NAME: {{name}}</h3>
+        <h3 class="h3">Firstname: {{fname}}</h3>
        <br>
-       <h3 class="h3">USERNAME: {{username}}</h3>
+       <h3 class="h3">Lastname: {{lname}}</h3>
        <br>
-       <h3 class="h3">EMAIL: {{email}}</h3><br>
-       <h3 class="h3">PHONE: {{phone}}</h3><br>
-       <h3 class="h3">WEBSITE: {{website}}</h3>
-        <img src="{{url}}"> 
+       <h3 class="h3">Email: {{email}}</h3><br>
+       <h3 class="h3">Phone: {{phone}}</h3><br>
+       <h3 class="h3">State: {{state}}</h3><br>
+       <h3 class="h3">City: {{city}}</h3>
+       
+        
        
    </div>
 </div>

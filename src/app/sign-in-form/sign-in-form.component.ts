@@ -4,6 +4,8 @@ import {FormControl,FormGroup,Validators}  from '@angular/forms'
 
 import { JsonPipe } from '@angular/common';
 import {Router} from  '@angular/router';
+import { GetService } from '../services/get.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -16,8 +18,8 @@ export class SignInFormComponent implements OnInit {
     email:new FormControl('',Validators.required),
     password:new FormControl('',Validators.required)
   })
-   details;
-  constructor(private router:Router) { }
+   details=new User();
+  constructor(private router:Router,private getService:GetService) { }
 
   status_hide=true;
   success_hide=true;
@@ -25,18 +27,24 @@ export class SignInFormComponent implements OnInit {
   ngOnInit(): void {}
 
   onclickSubmit(){
-    this.details=JSON.parse(localStorage.getItem('form'))
-   if(this.reactive_signin.get('email').value===this.details.email && this.reactive_signin.get('password').value===this.details.password )
-   {
-     this.success_hide=false;
-     this.status_hide=true;
-    this.router.navigate(['/home']);
-   }
-   else{
-    this.success_hide=true;
-    this.status_hide=false;
+    
+    this.getService.getUser(this.reactive_signin.get('email').value).subscribe((data:User)=>{
+      this.details=data;
 
-   }
+     console.log(this.details);
+     if(this.reactive_signin.get('email').value=== (this.details.email) && this.reactive_signin.get('password').value===(this.details.password) )
+     {
+       this.success_hide=false;
+       this.status_hide=true;
+      this.router.navigate(['/home']);
+     }
+     else{
+      this.success_hide=true;
+      this.status_hide=false;
+  
+     }
+})
+  
 
 }
 }

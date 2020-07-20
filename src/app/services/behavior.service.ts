@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {home} from 'src/app/models/home.model';
+import { home } from 'src/app/models/home.model';
+import { User } from '../models/user.model';
 
 
 
 @Injectable({
-    providedIn:"root"
+    providedIn: "root"
 })
 export class DataService {
+    dataSource = new BehaviorSubject<any>(null);
+    data = this.dataSource.asObservable();
 
-  dataSource ;
-  data ;
+    constructor() { }
 
-  constructor() { }
+    
 
-  loadvalue(value){
-   this.dataSource = new BehaviorSubject<home>(value);
-   this.data= this.dataSource.asObservable();
-  }
+    updatedDataSelection(userid) {
+        return this.dataSource.next(userid);
+    }
 
-  updatedDataSelection(data:home){
-    return this.dataSource.next(data);
-  }
-  
 }   

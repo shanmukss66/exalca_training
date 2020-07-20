@@ -1,5 +1,5 @@
 <div class="container-fluid" style="position: absolute; left: 30%;">
-    <h1>Sign Up Form</h1>
+    <h1>Edit Profile</h1>
     <form [formGroup]="reactive" (ngSubmit)="onclickSubmit()">
       <div class="form-group">
         <label>Firstname</label>
@@ -19,8 +19,8 @@
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input formControlName="email" type="text" required class="form-control">
-        <span class ="help-block" style="color: red;" *ngIf="(!reactive.get('email').valid) && (reactive.get('email').touched)">This field cannot be empty</span>
+        <input formControlName="email" type="text"  class="form-control" [attr.disabled]="disable_email">
+        
       </div>
       <div class="form-group">
         <label>Password</label>
@@ -53,6 +53,6 @@
        
       </div>
       <div class="btnlocation" >
-        <input type="submit" class="btn btn-primary" [disabled]="!reactive.valid" value="Submit">
+        <input type="submit" class="btn btn-primary" [disabled]="!reactive.valid" value="Save Changes">
       </div>
 <router-outlet></router-outlet>

@@ -5,23 +5,24 @@
     <table class="table">
       <thead>
         <tr>
-           <th></th>
+           
           <th>Firstname</th>
           <th>Lastname</th>
           <th>Email</th>
+          <th>Phone</th>
         </tr>
       </thead>
       <tbody>
            
-        <tr class="success" *ngFor="let u of users">
-          <td><input type="checkbox"  (change)="onChange(u.id, $event.target.checked)"></td>
+        <tr class="success" *ngFor="let u of users" [routerLink]="['/edit', u.id]">
           <td>{{u.fname}}</td>
           <td>{{u.lname}}</td>
           <td>{{u.email}}</td>
+          <td>{{u.phone}}</td>
         </tr>
 
       </tbody>
     </table>
-    <button class="btn btn-danger" (click)="onClickDelete()">Delete</button>
+    
   
   </div>

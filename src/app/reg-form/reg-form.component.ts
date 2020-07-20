@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormControl , FormGroup , Validators} from '@angular/forms';
+import { GetService } from '../services/get.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class RegFormComponent implements OnInit {
     selected_city:new FormControl('')
   })
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private getService:GetService) { }
 
   ngOnInit(): void {
   }
@@ -44,8 +45,18 @@ export class RegFormComponent implements OnInit {
 
  onclickSubmit(){
      
-    localStorage.setItem("form",JSON.stringify(this.reactive.value));
+  this.getService.addUser(JSON.stringify(this.reactive.value)).subscribe((data)=>{
+    
+   
+   
+ 
+    console.log(data);
     this.router.navigate(['/home']);
+    
+    
+ })
+    
+    
      
  }
 
